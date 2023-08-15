@@ -4,7 +4,15 @@ import TallyTile from "./little_comps/TallyTile.jsx";
 
 // mongo query to findById() — pull list of all surveys with the _id from the user object
 // this array will be a result of the DB call. Full doc for each
-const userInfo = { name: "Josh" };
+
+// fetch userInfo: name and list of poll _id
+const userInfo = {
+  name: "Josh",
+  tallies: ["asdf1234", "qwer1234", "zxcv5678"],
+};
+
+// userTallies will be result of a fetch request using userInfo.tallies array as req.body
+// response should look something like the placeholder data below in userTallies
 const userTallies = [
   {
     active: true,
@@ -22,7 +30,7 @@ const userTallies = [
     active: true,
     name: "Family vacation location: 2024 —- ",
     numResp: 5,
-    _id: "qwer1234",
+    _id: "zxcv5678",
   },
 ];
 
