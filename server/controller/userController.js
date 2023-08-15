@@ -1,5 +1,5 @@
 const { restart } = require('nodemon');
-const User = require('../model/userModel.js');
+const { User } = require('../model/userModel.js');
 const userController = {};
 const asyncHandler = require('express-async-handler');
 const bcrypt = require('bcrypt');
@@ -7,7 +7,21 @@ const bcrypt = require('bcrypt');
 // create user
 // first name, email, password
 userController.registerUser = asyncHandler(async (req, res, next) => {
+  console.log('inside registerUser');
   const { firstName, email, password } = req.body;
+  console.log(req.body);
+
+  // User.create(req.body)
+  //   .then((createdDoc) => {
+  //     res.locals.createChar = createdDoc;
+  //     return next();
+  //   })
+  //   .catch((err) =>
+  //     next({
+  //       log: `Express error handler caught unknown middleware error: ERROR : ${err}`,
+  //       status: err.status || 500,
+  //     })
+  //   );
 
   //if (User.find({ username })) throw new Error("User already exists");
   const userCheck = await User.find({ email });
@@ -71,6 +85,7 @@ userController.deleteUser = async (req, res, next) => {
 };
 
 // find a user
-// mostly for  testing deletion
+// mostly for testing deletion
 // username must be passed in request body
+
 module.exports = userController;
