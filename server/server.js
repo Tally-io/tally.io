@@ -3,16 +3,20 @@ const path = require('path');
 const app = express();
 const PORT = 3000; //
 
+// require router
+const userRouter = require('./router/userRouter');
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-console.log('in the server');
 
 // statically serve everything in the build folder on the route '/build'
 app.use(express.static(path.join(__dirname, '../build')));
 app.get('/', (req, res) => {
   return res.status(200).sendFile(path.join(__dirname, '../index.html'));
 });
+
+console.log('before userRouter');
+app.use('/user', userRouter);
 
 // catch all route
 app.get('*', (req, res) => {
