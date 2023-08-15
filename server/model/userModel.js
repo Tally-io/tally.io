@@ -1,18 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
-// const uri =
-//   'mongodb+srv://morahgeist:V93nc0qtfFchsrAR@clusterev.gf2u2ik.mongodb.net/?retryWrites=true&w=majority';
-
-// mongoose.connect(uri, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-//   dbName: 'Tallyio',
-// });
-// mongoose.connection.once('open', () => {
-//   console.log('Connected to Database');
-// });
-
 const userSchema = new mongoose.Schema({
   firstName: {
     type: String,

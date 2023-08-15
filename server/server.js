@@ -1,13 +1,18 @@
+require('dotenv').config();
+
 const express = require('express');
 const path = require('path');
 const app = express();
-const PORT = 3000; //
+const startServer = require('./database/dbConnection.js');
+const PORT = 3000;
 
 // require router
 const userRouter = require('./router/userRouter');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+startServer();
 
 // statically serve everything in the build folder on the route '/build'
 app.use(express.static(path.join(__dirname, '../build')));
