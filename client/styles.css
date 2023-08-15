@@ -1,3 +1,8 @@
+. {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
 h1 {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
@@ -13,9 +18,17 @@ body {
 
 .create-tally-button {
   margin: 0 auto;
+  cursor: pointer;
+  justify-content: center;
   padding: 15px;
   padding-left: 30px;
   padding-right: 30px;
+}
+
+.tally-list {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .tally-tile {
@@ -40,14 +53,22 @@ body {
 
 .navBar {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.welcome {
+  font-size: 22px;
 }
 
 .logout-button {
   border-radius: 5px;
   background-color: darkred;
+  cursor: pointer;
   color: white;
   margin: 5px;
   padding: 5px;
   padding-left: 15px;
   padding-right: 15px;
+  margin: right;
 }
