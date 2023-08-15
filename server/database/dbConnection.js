@@ -8,6 +8,7 @@ async function startServer() {
   const connection = await mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    dbName: 'Tallyio',
   });
   console.log(`MongoDB is connected to: ${connection.connection.host}`);
 }

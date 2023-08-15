@@ -8,7 +8,7 @@ const PORT = 3000;
 
 // require router
 const userRouter = require('./router/userRouter');
-
+const surveyRouter = require('./router/surveyRouter');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -20,9 +20,8 @@ app.get('/', (req, res) => {
   return res.status(200).sendFile(path.join(__dirname, '../index.html'));
 });
 
-console.log('before userRouter');
 app.use('/user', userRouter);
-
+app.use('/survey', surveyRouter);
 // catch all route
 app.get('*', (req, res) => {
   return res.status(404).send('Page Not Found!');

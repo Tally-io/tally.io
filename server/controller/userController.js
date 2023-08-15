@@ -1,8 +1,9 @@
 const { restart } = require('nodemon');
 const User = require('../model/userModel.js');
-const userController = {};
 const asyncHandler = require('express-async-handler');
 const bcrypt = require('bcrypt');
+
+const userController = {};
 
 // create user
 // first name, email, password

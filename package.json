@@ -22,7 +22,8 @@
     "html-webpack-plugin": "^5.5.3",
     "mongoose": "^7.4.3",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "shortid": "^2.2.16"
   },
   "devDependencies": {
     "@babel/core": "^7.22.10",
