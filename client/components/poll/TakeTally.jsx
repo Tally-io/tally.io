@@ -22,7 +22,7 @@ const TakeTally = () => {
       .then((data) => {
         console.log(data);
         setQuestion(data.title);
-        // setOptions(data.options);
+        setOptions(data.options);
       })
       .catch((error) => {
         console.log('error fetching tally data:', error);
@@ -46,7 +46,7 @@ const TakeTally = () => {
   // function for the user selecting an option
   const handlePick = (tallyIndex) => {
     console.log('handlepick');
-    const tallyList = [...options];
+    const tallyList = [...option];
     //toggles "selected" property of the option at tallyIndex.
     tallyList[tallyIndex].selected = !tallyList[tallyIndex].selected;
     setOptions(tallyList);
@@ -67,11 +67,11 @@ const TakeTally = () => {
 
   const handleSubmit = () => {
     const updatedOptions = {
-      // options: option,
+      options: option,
     };
 
-    fetch(`/survey_id=${survey_id}`, {
-      method: 'PUT',
+    fetch(`/${questionId}/sendOptions`, {
+      method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
       },
