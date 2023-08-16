@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   BrowserRouter,
-} from "react-router-dom";
-import Landing from "./Admin/Landing.jsx";
-import Home from "./Admin/Home.jsx";
-import "../styles.css";
+} from 'react-router-dom';
+import Landing from './Admin/Landing.jsx';
+import Home from './Admin/Home.jsx';
+import '../styles.css';
 
 const App = () => {
   return (

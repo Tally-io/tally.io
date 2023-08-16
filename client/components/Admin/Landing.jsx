@@ -73,49 +73,53 @@ const Landing = () => {
       });
   };
   return (
-    <div className='loginPage-container'>
-      <div className='login-container'>
+    <div className="loginPage-container">
+      <div className="login-container">
         <form onSubmit={handleLogin}>
           <input
-            className='login-input'
-            type='email'
-            placeholder='Enter Email'
-            name='loginEmail'
+            className="login-input"
+            type="email"
+            placeholder="Enter Email"
+            name="loginEmail"
             value={loginEmail}
             onChange={(e) => setLoginEmail(e.target.value)}
           />
           <input
-            className='login-input'
-            type='password'
-            placeholder='Enter Password'
-            name='loginPassword'
+            className="login-input"
+            type="password"
+            placeholder="Enter Password"
+            name="loginPassword"
             value={loginPass}
             onChange={(e) => setLoginPass(e.target.value)}
           />
-          <button type='submit'>Login</button>
+          <button className="loginBtn" type="submit">
+            Login
+          </button>
         </form>
       </div>
-      <div className='signUp-container'>
+      <div className="signUp-container">
         <form onSubmit={handleSignup}>
           <input
-            type='text'
-            placeholder='Name'
+            type="text"
+            placeholder="Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
           <input
-            type='email'
-            placeholder='Email'
+            type="email"
+            placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
-            type='password'
-            placeholder='Password'
+            type="password"
+            placeholder="Password"
             value={pass}
             onChange={(e) => setPass(e.target.value)}
           />
-          <button type='submit'>Sign Up</button>
+          <button className="signupBtn" type="submit">
+            Sign Up
+          </button>
         </form>
       </div>
     </div>

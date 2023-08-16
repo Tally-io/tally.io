@@ -1,14 +1,14 @@
-import React, { useEffect } from "react";
-import NavBar from "./little_comps/NavBar.jsx";
-import TallyTile from "./little_comps/TallyTile.jsx";
+import React, { useEffect } from 'react';
+import NavBar from './little_comps/NavBar.jsx';
+import TallyTile from './little_comps/TallyTile.jsx';
 
 // mongo query to findById() — pull list of all surveys with the _id from the user object
 // this array will be a result of the DB call. Full doc for each
 
 // fetch userInfo: name and list of poll _id
 const userInfo = {
-  name: "Josh",
-  tallies: ["asdf1234", "qwer1234", "zxcv5678"],
+  name: 'Josh',
+  tallies: ['asdf1234', 'qwer1234', 'zxcv5678'],
 };
 
 // userTallies will be result of a fetch request using userInfo.tallies array as req.body
@@ -16,21 +16,21 @@ const userInfo = {
 const userTallies = [
   {
     active: true,
-    name: "Dinner location Friday Aug 18 —- ",
+    name: 'Dinner location Friday Aug 18 —- ',
     numResp: 5,
-    _id: "asdf1234",
+    _id: 'asdf1234',
   },
   {
     active: false,
-    name: "ECRI-41 Bookclub: August  —- ",
+    name: 'ECRI-41 Bookclub: August  —- ',
     numResp: 5,
-    _id: "qwer1234",
+    _id: 'qwer1234',
   },
   {
     active: true,
-    name: "Family vacation location: 2024 —- ",
+    name: 'Family vacation location: 2024 —- ',
     numResp: 5,
-    _id: "zxcv5678",
+    _id: 'zxcv5678',
   },
 ];
 
@@ -43,19 +43,19 @@ for (let i = 0; i < userTallies.length; i++) {
   if (userTallies[i].active) {
     listTallies.unshift(
       <TallyTile
-        name={userTallies[i]["name"]}
-        numResp={userTallies[i]["numResp"]}
-        active={userTallies[i]["active"]}
-        key={userTallies[i]["_id"]}
+        name={userTallies[i]['name']}
+        numResp={userTallies[i]['numResp']}
+        active={userTallies[i]['active']}
+        key={userTallies[i]['_id']}
       />
     );
   } else {
     listTallies.push(
       <TallyTile
-        name={userTallies[i]["name"]}
-        numResp={userTallies[i]["numResp"]}
-        active={userTallies[i]["active"]}
-        key={userTallies[i]["_id"]}
+        name={userTallies[i]['name']}
+        numResp={userTallies[i]['numResp']}
+        active={userTallies[i]['active']}
+        key={userTallies[i]['_id']}
       />
     );
   }
@@ -75,7 +75,7 @@ const Home = () => {
       <hr />
 
       <div className="create-container">
-        <button className="create-tally-button">Create a tally!</button>
+        <button className="createTallyBtn">Create a tally!</button>
       </div>
 
       <div>
