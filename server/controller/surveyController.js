@@ -1,4 +1,3 @@
-const shortid = require('shortid'); // Import the shortid library
 const surveyModel = require('../model/surveyModel');
 const asyncHandler = require('express-async-handler');
 const { parse } = require('dotenv');
