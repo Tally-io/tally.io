@@ -1,7 +1,7 @@
-. {
+/* * {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-}
+} */
 
 h1 {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -71,4 +71,27 @@ body {
   padding-left: 15px;
   padding-right: 15px;
   margin: right;
+}
+
+.new-tally {
+  display: flex;
+}
+
+.new-tally-container {
+  display: flex;
+  /* align-items: center; */
+  align-content: center;
+}
+
+.new-tally-input {
+  display: flex;
+
+  margin: 10px;
+}
+
+.new-tally-create {
+  margin: 20px;
+  padding: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
 }

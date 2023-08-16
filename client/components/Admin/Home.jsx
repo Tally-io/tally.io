@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { redirect, BrowserRouter, useNavigate } from "react-router-dom";
 import NavBar from "./little_comps/NavBar.jsx";
 import TallyTile from "./little_comps/TallyTile.jsx";
 
@@ -61,12 +62,10 @@ for (let i = 0; i < userTallies.length; i++) {
   }
 }
 
-console.log(listTallies);
-// get a list of all tallys
-
 const Home = () => {
-  // do we need useEffect for the rendering? Or is what I've got above okay?
-  // useEffect(() => {}, []);
+  const navigate = useNavigate();
+
+  const toTallyCreate = (e) => navigate("/create");
 
   return (
     <div>
@@ -75,7 +74,9 @@ const Home = () => {
       <hr />
 
       <div className="create-container">
-        <button className="create-tally-button">Create a tally!</button>
+        <button onClick={toTallyCreate} className="create-tally-button">
+          Create a tally!
+        </button>
       </div>
 
       <div>
