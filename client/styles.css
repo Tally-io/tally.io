@@ -1,10 +1,16 @@
-/* * {
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-} */
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
+
+* {
+  margin: none;
+  padding: none;
+  font-family: "Poppins", sans-serif;
+}
+
+strong {
+  font-weight: 600;
+}
 
 h1 {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
 }
 
@@ -12,8 +18,56 @@ body {
   max-width: 390px;
 }
 
+input {
+  margin-bottom: 10px;
+}
+
+.big-container {
+  display: flex;
+  justify-items: center;
+}
+.app-container {
+  border: 2px solid rgb(53, 53, 53);
+  border-radius: 1rem;
+}
+.loginPage-container {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-container form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loginPage-container input {
+  display: block;
+}
+
+.signUp-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.signUp-container form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .create-container {
   display: flex;
+  justify-content: center;
 }
 
 .create-tally-button {
@@ -33,22 +87,36 @@ body {
 
 .tally-tile {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   border: solid 2px black;
   border-radius: 5px;
-  background-color: aliceblue;
+  color: #ffffff;
+  background-color: #06d6a0;
   margin: 5px;
   padding: 5px;
-  max-width: 80%;
+  min-width: 80%;
 }
 
 .tally-tile-inactive {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   border: solid 2px black;
   border-radius: 5px;
-  background-color: grey;
+  color: #a4a4a4;
+  background-color: #004777;
   margin: 5px;
   padding: 5px;
-  max-width: 80%;
+  min-width: 80%;
+}
+
+.tt-tally-name {
+  background-color: inherit;
+}
+
+.tt-tally-votes {
+  background-color: inherit;
 }
 
 .navBar {
@@ -62,15 +130,56 @@ body {
 }
 
 .logout-button {
-  border-radius: 5px;
-  background-color: darkred;
+  background-color: rgba(51, 51, 51, 0.05);
+  border-radius: 8px;
+  border-width: 0;
+  color: #333333;
   cursor: pointer;
-  color: white;
-  margin: 5px;
-  padding: 5px;
-  padding-left: 15px;
-  padding-right: 15px;
-  margin: right;
+  display: inline-block;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 10px 12px;
+  text-align: center;
+  transition: all 200ms;
+  vertical-align: baseline;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.loginBtn,
+.signupBtn,
+.createTallyBtn {
+  background-color: #820263;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.createTallyBtn {
+  background-color: #d90368;
 }
 
 .new-tally {
@@ -79,17 +188,29 @@ body {
 
 .new-tally-container {
   display: flex;
-  /* align-items: center; */
+  flex-direction: column;
   align-content: center;
+  align-items: center;
+}
+.new-tally-container form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
-.new-tally-input {
-  display: flex;
-
-  margin: 10px;
+.new-tally-container input {
+  display: block;
 }
 
 .new-tally-create {
+  margin: 20px;
+  padding: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.copy-to-clipboard {
   margin: 20px;
   padding: 5px;
   padding-left: 15px;

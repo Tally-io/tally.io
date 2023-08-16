@@ -17,19 +17,19 @@ const userInfo = {
 const userTallies = [
   {
     active: true,
-    name: "Dinner location Friday Aug 18 —- ",
+    name: "Dinner location Friday Aug 18",
     numResp: 5,
     _id: "asdf1234",
   },
   {
     active: false,
-    name: "ECRI-41 Bookclub: August  —- ",
+    name: "ECRI-41 Bookclub: August",
     numResp: 5,
     _id: "qwer1234",
   },
   {
     active: true,
-    name: "Family vacation location: 2024 —- ",
+    name: "Family vacation location: 2024",
     numResp: 5,
     _id: "zxcv5678",
   },
@@ -69,12 +69,11 @@ const Home = () => {
 
   return (
     <div>
-      <hr />
       <NavBar name={userInfo.name} key={userInfo.name} />
       <hr />
 
       <div className="create-container">
-        <button onClick={toTallyCreate} className="create-tally-button">
+        <button onClick={toTallyCreate} className="createTallyBtn">
           Create a tally!
         </button>
       </div>

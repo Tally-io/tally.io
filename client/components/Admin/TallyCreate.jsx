@@ -30,6 +30,7 @@ const TallyCreate = () => {
       <hr />
       <h3>Create a new Tally!</h3>
       <hr />
+      <br />
       <div className="new-tally-container">
         <form onSubmit={createTally}>
           <input
@@ -59,17 +60,16 @@ const TallyCreate = () => {
       </div>
 
       <hr />
+      <br />
 
-      <div>
+      <div className="new-tally-container">
         <input
           className="survey-link"
           placeholder="Tally link will appear here"
         />
-        <section className="section">
-          <CopyToClipboard onCopy={onCopy} text={value}>
-            <button>Copy Tally Link</button>
-          </CopyToClipboard>
-        </section>
+        <CopyToClipboard onCopy={onCopy} text={value}>
+          <button className="copy-to-clipboard">Copy Tally Link</button>
+        </CopyToClipboard>
       </div>
     </div>
   );
