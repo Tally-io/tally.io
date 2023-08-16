@@ -18,7 +18,7 @@ const Landing = () => {
     const emailVal = formData.get('loginEmail');
     const passVal = formData.get('loginPassword');
     //ENTER LOGIN LOGIC HERE, if logic passes, navigate to /home endpoint
-    fetch('/', {
+    fetch('/user/login', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -47,7 +47,7 @@ const Landing = () => {
     const emailVal = formData.get('loginEmail');
     const passVal = formData.get('loginPassword');
     const nameVal = formData.get('name');
-    fetch('/signup', {
+    fetch('/user', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
