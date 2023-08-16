@@ -13,16 +13,19 @@ import "../styles.css";
 
 const App = () => {
   return (
-    <div>
-      <h1>Tally.io</h1>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/create" element={<TallyCreate />} />
-          {/* <Route path='/test' element={<TakeTally />} /> */}
-        </Routes>
-      </BrowserRouter>
+    <div className="big-container">
+      <div className="app-container">
+        <h1>Tally.io</h1>
+        <hr />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/create" element={<TallyCreate />} />
+            {/* <Route path='/test' element={<TakeTally />} /> */}
+          </Routes>
+        </BrowserRouter>
+      </div>
     </div>
   );
 };
