@@ -22,18 +22,17 @@ app.use('/user', userRouter);
 app.get('/', (req, res) => {
   return res
     .status(200)
-    .sendFile(
-      path.resolve(__dirname, '../Client/login and signup/signup-login.html')
-    );
+    .sendFile(path.resolve(__dirname, '../client/index.js'));
 });
 
-app.get('/landingpage', (req, res) => {
-  return res
-    .status(200)
-    .sendFile(
-      path.resolve(__dirname, '../Client/login and signup/WelcomeScreen.html')
-    );
-});
+// this is same as above, dont need / anything
+// app.get('/landingpage', (req, res) => {
+//   return res
+//     .status(200)
+//     .sendFile(
+//       path.resolve(__dirname, '../Client/login and signup/WelcomeScreen.html')
+//     );
+// });
 
 // catch all route
 app.get('*', (req, res) => {
