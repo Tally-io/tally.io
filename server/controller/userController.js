@@ -4,8 +4,6 @@ const userController = {};
 const asyncHandler = require('express-async-handler');
 const bcrypt = require('bcrypt');
 
-const userController = {};
-
 // create user
 // first name, email, password
 userController.registerUser = asyncHandler(async (req, res, next) => {
