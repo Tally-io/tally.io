@@ -1,0 +1,53 @@
+h1 {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+
+body {
+  max-width: 390px;
+}
+
+.create-container {
+  display: flex;
+}
+
+.create-tally-button {
+  margin: 0 auto;
+  padding: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.tally-tile {
+  display: flex;
+  border: solid 2px black;
+  border-radius: 5px;
+  background-color: aliceblue;
+  margin: 5px;
+  padding: 5px;
+  max-width: 80%;
+}
+
+.tally-tile-inactive {
+  display: flex;
+  border: solid 2px black;
+  border-radius: 5px;
+  background-color: grey;
+  margin: 5px;
+  padding: 5px;
+  max-width: 80%;
+}
+
+.navBar {
+  display: flex;
+}
+
+.logout-button {
+  border-radius: 5px;
+  background-color: darkred;
+  color: white;
+  margin: 5px;
+  padding: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
