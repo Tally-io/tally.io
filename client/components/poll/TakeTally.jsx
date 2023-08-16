@@ -48,7 +48,7 @@ const TakeTally = ({ surveyId }) => {
 
   const handleSubmit = () => {
     const updatedOptions = {
-      options: options,
+      options: option,
     };
 
     fetch(`/survey_id=${survey_id}`, {
@@ -57,11 +57,22 @@ const TakeTally = ({ surveyId }) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(updatedOptions),
-    }).then((response) => {});
+    })
+      .then((response) => {
+        if (response.ok) {
+          window.alert('Submission Accepted');
+        } else {
+          console.log('failed to update options');
+        }
+      })
+      .catch((error) => {
+        console.log('an error occurred:', error);
+      });
   };
   return (
-    <div>
-      <h1>APPPPPPPP</h1>
+    <div class='take-tally-container'>
+      <h2>{question}</h2>
+      <form onSubmit={handleSubmit}></form>
     </div>
   );
 };
