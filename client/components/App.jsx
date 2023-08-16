@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Landing from "./Admin/Landing.jsx";
 import Home from "./Admin/Home.jsx";
+import TakeTally from "./poll/TakeTally.jsx";
 import TallyCreate from "./Admin/TallyCreate.jsx";
 import "../styles.css";
 
@@ -19,6 +20,7 @@ const App = () => {
           <Route path="/" element={<Landing />} />
           <Route path="/home" element={<Home />} />
           <Route path="/create" element={<TallyCreate />} />
+          {/* <Route path='/test' element={<TakeTally />} /> */}
         </Routes>
       </BrowserRouter>
     </div>
