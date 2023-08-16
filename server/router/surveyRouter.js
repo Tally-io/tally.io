@@ -16,6 +16,8 @@ router.post('/createPoll', surveyController.createQuestion, (req, res) => {
   return res.status(201).json(res.locals.sendDoc);
 });
 
+console.log('before serving the questions');
+
 router.get('/:questionId', surveyController.serveQuestions, (req, res) => {
   return res.status(201).json(res.locals.question);
 });

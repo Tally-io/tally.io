@@ -4,6 +4,8 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const TallyCreate = () => {
   // import userInfo?? right now it's hard coded
+const loggedInPerson = '617e4a9a88438e5e2b96e4fb'
+
   const userInfo = {
     name: "Josh",
     tallies: ["asdf1234", "qwer1234", "zxcv5678"],

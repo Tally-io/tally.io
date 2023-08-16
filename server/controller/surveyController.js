@@ -37,7 +37,7 @@ surveyController.createQuestion = async (req, res, next) => {
 surveyController.serveQuestions = async (req, res, next) => {
   try {
     const questionId = req.params.questionId;
-    console.log(questionId);
+    // console.log(questionId);
     const question = await Question.findById(questionId);
 
     if (!question) {

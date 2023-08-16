@@ -4,6 +4,7 @@ import {
   Routes,
   Route,
   BrowserRouter,
+  HashRouter,
 } from 'react-router-dom';
 import Landing from './Admin/Landing.jsx';
 import Home from './Admin/Home.jsx';
@@ -18,14 +19,14 @@ const App = () => {
       <div className='app-container'>
         <h1>Tally.io</h1>
         <hr />
-        <BrowserRouter>
+        <HashRouter>
           <Routes>
             <Route path='/' element={<Landing />} />
             <Route path='/home' element={<Home />} />
             <Route path='/create' element={<TallyCreate />} />
-            <Route path='/test' element={<TakeTally />} />
+            <Route path='/survey/get/:questionId' element={<TakeTally />} />
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </div>
     </div>
   );

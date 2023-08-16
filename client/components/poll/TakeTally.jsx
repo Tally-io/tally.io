@@ -1,52 +1,56 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
-const TakeTally = ({ survey_id }) => {
+const TakeTally = () => {
+  const { questionId } = useParams();
+  console.log(questionId);
   //this is for getting the survey ID from the URL parameters
-  const [question, setQuestion] = useState("");
+  const [question, setQuestion] = useState('');
   const [option, setOptions] = useState([]);
-  const [newTally, setNewTally] = useState("");
+  const [newTally, setNewTally] = useState('');
 
   // fetches the survey data from DB using survey ID
   // updates the state the the fetched question and options
-  // useEffect(() => {
-  //   fetch(`/survey_id=${survey_id}`)
-  //     .then((response) => {
-  //       if (!response.ok) {
-  //         return new Error("error getting survey");
-  //       }
-  //       return response.json();
-  //     })
-  //     .then((data) => {
-  //       setQuestion(data.title);
-  //       setOptions(data.options);
-  //     })
-  //     .catch((error) => {
-  //       console.log("error fetching tally data:", error);
-  //     });
-  // }, [survey_id]);
-
-  // Placeholder data for testing
-  const placeholderQuestion = "What is your favorite color?";
-  const placeholderOptions = [
-    { text: "Red", selected: false },
-    { text: "Blue", selected: false },
-    { text: "Green", selected: false },
-  ];
-
-  // PLACEHOLDER USE EFFECT
   useEffect(() => {
-    setQuestion(placeholderQuestion);
-    setOptions(placeholderOptions);
+    fetch(`/survey/${questionId}`)
+      .then((response) => {
+        return response.json();
+        // if (!response.ok) {
+        //   return new Error('error getting survey');
+        // }
+      })
+      .then((data) => {
+        console.log(data);
+        setQuestion(data.title);
+        setOptions(data.options);
+      })
+      .catch((error) => {
+        console.log('error fetching tally data:', error);
+      });
   }, []);
 
+  // Placeholder data for testing
+  // const placeholderQuestion = "What is your favorite color?";
+  // const placeholderOptions = [
+  //   { text: "Red", selected: false },
+  //   { text: "Blue", selected: false },
+  //   { text: "Green", selected: false },
+  // ];
+
+  // PLACEHOLDER USE EFFECT
+  // useEffect(() => {
+  //   setQuestion(placeholderQuestion);
+  //   setOptions(placeholderOptions);
+  // }, []);
+
   // function for the user selecting an option
-  // const handlePick = (tallyIndex) => {
-  //   console.log("handlepick");
-  //   const tallyList = [...options];
-  //   //toggles "selected" property of the option at tallyIndex.
-  //   tallyList[tallyIndex].selected = !tallyList[tallyIndex].selected;
-  //   setOptions(tallyList);
-  // };
+  const handlePick = (tallyIndex) => {
+    console.log('handlepick');
+    const tallyList = [...option];
+    //toggles "selected" property of the option at tallyIndex.
+    tallyList[tallyIndex].selected = !tallyList[tallyIndex].selected;
+    setOptions(tallyList);
+  };
 
   const handleNewTallyText = (e) => {
     e.preventDefault();
@@ -54,10 +58,10 @@ const TakeTally = ({ survey_id }) => {
   };
 
   const handleAddTally = () => {
-    if (newTally.trim() !== "") {
+    if (newTally.trim() !== '') {
       const tallyList = [...option, { text: newTally, selected: false }];
       setOptions(tallyList);
-      setNewTally("");
+      setNewTally('');
     }
   };
 
@@ -66,29 +70,29 @@ const TakeTally = ({ survey_id }) => {
       options: option,
     };
 
-    fetch(`/survey_id=${survey_id}`, {
-      method: "PUT",
+    fetch(`/${questionId}/sendOptions`, {
+      method: 'PATCH',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(updatedOptions),
     })
       .then((response) => {
         if (response.ok) {
-          window.alert("Submission Accepted");
+          window.alert('Submission Accepted');
         } else {
-          console.log("failed to update options");
+          console.log('failed to update options');
         }
       })
       .catch((error) => {
-        console.log("an error occurred:", error);
+        console.log('an error occurred:', error);
       });
   };
   return (
-    <div className="take-tally-container">
+    <div className='take-tally-container'>
       <h2>{question}</h2>
       <form onSubmit={handleSubmit}>
-        {placeholderOptions.map((option, index) => (
+        {/* {placeholderOptions.map((option, index) => (
           <div key={index}>
             <label>
               <input
@@ -99,8 +103,8 @@ const TakeTally = ({ survey_id }) => {
               {option.text}
             </label>
           </div>
-        ))}
-        {/* {options.map((option, index) => (
+        ))} */}
+        {option.map((option, index) => (
           <div key={index}>
             <label>
               <input
@@ -111,21 +115,19 @@ const TakeTally = ({ survey_id }) => {
               {option.text}
             </label>
           </div>
-        ))} */}
-
-        {/* <div>
+        ))}
+        <div>
           <input
-            type="text"
-            placeholder="add your own option"
+            type='text'
+            placeholder='add your own option'
             value={newTally}
             onChange={handleNewTallyText}
           />
-          <button type="button" onClick={handleAddTally}>
+          <button type='button' onClick={handleAddTally}>
             Add Tally!
           </button>
-        </div> */}
-
-        <button type="button" onClick={handleSubmit}>
+        </div>
+        <button type='button' onClick={handleSubmit}>
           Submit
         </button>
       </form>
