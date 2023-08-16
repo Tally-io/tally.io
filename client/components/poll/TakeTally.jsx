@@ -102,7 +102,7 @@ const TakeTally = () => {
             </label>
           </div>
         ))} */}
-        {options.map((option, index) => (
+        {option.map((option, index) => (
           <div key={index}>
             <label>
               <input
