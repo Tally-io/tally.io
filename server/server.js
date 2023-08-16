@@ -9,7 +9,7 @@ const PORT = 3000;
 const userController = require('./controller/userController.js');
 const userRouter = require('./router/userRouter');
 const surveyRouter = require('./router/surveyRouter');
-app.use(express.urlencoded({ extended: true }));
+
 app.use(express.json());
 // if you ever have a form on your frontend, express.urlencoded
 app.use(express.urlencoded({ extended: true })); // this will be helpful for stringifying a form req from an .html file
