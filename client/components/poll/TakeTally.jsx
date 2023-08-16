@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useParams } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 const TakeTally = () => {
   const { questionId } = useParams();
@@ -13,19 +14,20 @@ const TakeTally = () => {
   useEffect(() => {
     fetch(`/survey/${questionId}`)
       .then((response) => {
-        if (!response.ok) {
-          return new Error('error getting survey');
-        }
         return response.json();
+        // if (!response.ok) {
+        //   return new Error('error getting survey');
+        // }
       })
       .then((data) => {
+        console.log(data);
         setQuestion(data.title);
-        setOptions(data.options);
+        // setOptions(data.options);
       })
       .catch((error) => {
         console.log('error fetching tally data:', error);
       });
-  }, [questionId]);
+  }, []);
 
   // Placeholder data for testing
   // const placeholderQuestion = "What is your favorite color?";
@@ -65,7 +67,7 @@ const TakeTally = () => {
 
   const handleSubmit = () => {
     const updatedOptions = {
-      options: option,
+      // options: option,
     };
 
     fetch(`/survey_id=${survey_id}`, {
@@ -102,7 +104,7 @@ const TakeTally = () => {
             </label>
           </div>
         ))} */}
-        {options.map((option, index) => (
+        {option.map((option, index) => (
           <div key={index}>
             <label>
               <input
