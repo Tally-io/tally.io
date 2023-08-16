@@ -18,6 +18,7 @@ const Landing = () => {
     const emailVal = formData.get('loginEmail');
     const passVal = formData.get('loginPassword');
     //ENTER LOGIN LOGIC HERE, if logic passes, navigate to /home endpoint
+    
     fetch('/user/login', {
       method: 'POST',
       headers: {
@@ -44,16 +45,16 @@ const Landing = () => {
     //prevents default form submission
     e.preventDefault();
     const formData = new FormData(e.target);
-    const emailVal = formData.get('loginEmail');
-    const passVal = formData.get('loginPassword');
+    const emailVal = formData.get('Email');
+    const passVal = formData.get('Password');
     const nameVal = formData.get('name');
-    fetch('/user', {
+    fetch('/user/create', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
       },
       body: JSON.stringify({
-        name: nameVal,
+        firstName: nameVal,
         email: emailVal,
         password: passVal,
       }),
@@ -120,18 +121,21 @@ const Landing = () => {
             type='text'
             placeholder='Name'
             value={name}
+            name = 'name'
             onChange={(e) => setName(e.target.value)}
           />
           <input
             type='email'
             placeholder='Email'
             value={email}
+            name = "Email"
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
             type='password'
             placeholder='Password'
             value={pass}
+            name = "password"
             onChange={(e) => setPass(e.target.value)}
           />
           <button type='submit' className='signupBtn'>
