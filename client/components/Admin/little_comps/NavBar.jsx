@@ -7,12 +7,10 @@ const NavBar = (props) => {
   };
 
   return (
-    <div>
-      <div>
-        Welcome, {props.name}
-        <button className="logout-button" onClick={logout}>
-          logout
-        </button>
+    <div className="navBar">
+      <div className="welcome">Welcome, {props.name}</div>
+      <div className="logout-button" onClick={logout}>
+        logout
       </div>
     </div>
   );
