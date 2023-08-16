@@ -8,7 +8,7 @@ const PORT = 3000;
 
 const userController = require('./controller/userController.js');
 const userRouter = require('./router/userRouter');
-
+const surveyRouter = require('./router/surveyRouter');
 app.use(express.json());
 // if you ever have a form on your frontend, express.urlencoded
 app.use(express.urlencoded({ extended: true })); // this will be helpful for stringifying a form req from an .html file
@@ -25,15 +25,8 @@ app.get('/', (req, res) => {
     .sendFile(path.resolve(__dirname, '../client/index.js'));
 });
 
-// this is same as above, dont need / anything
-// app.get('/landingpage', (req, res) => {
-//   return res
-//     .status(200)
-//     .sendFile(
-//       path.resolve(__dirname, '../Client/login and signup/WelcomeScreen.html')
-//     );
-// });
-
+app.use('/user', userRouter);
+app.use('/survey', surveyRouter);
 // catch all route
 app.get('*', (req, res) => {
   return res.status(404).send('Page Not Found!');
