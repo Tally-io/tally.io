@@ -11,6 +11,6 @@ async function startServer() {
     dbName: 'Tallyio',
   });
   console.log('Connected to Database');
-  console.log(`connected to: ${connection.connection.host}`);
+  // console.log(`connected to: ${connection.connection.host}`);
 }
 module.exports = startServer;

@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt');
 // create user
 // first name, email, password
 userController.registerUser = asyncHandler(async (req, res, next) => {
-  console.log('inside registerUser');
+  console.log('inside registerUser in userController');
   const { firstName, email, password } = req.body;
   console.log(req.body);
 
@@ -27,6 +27,7 @@ userController.registerUser = asyncHandler(async (req, res, next) => {
   const userCheck = await User.find({ email });
   //console.log('username : ', username, ' : ', userCheck);
   if (userCheck.length > 0) throw new Error('User already exists');
+  console.log('user exists');
   // if we find the user we need to throw an error
   res.locals.registeredUser = await User.create({
     firstName: firstName,
@@ -37,16 +38,38 @@ userController.registerUser = asyncHandler(async (req, res, next) => {
   return next();
 });
 
-// validate user
-userController.authUser = async (req, res, next) => {
-  const { firstName, email, password } = req.body;
-  // get user from db
-  const userCheck = await User.find({ email });
-  console.log('email : ', email, ' : ', userCheck);
-  // check if user is in db
-  if (userCheck.length <= 0) {
-    return next({ message: { err: 'user not found' } });
-  }
+// // validate user
+// userController.authUser = async (req, res, next) => {
+//   // console.log('inside authUser in controller');
+//   const { email, password } = req.body;
+//   // get user from db
+//   const userCheck = await User.find({ email });
+//   console.log('email : ', email, ' : ', userCheck);
+//   // check if user is in db
+//   if (userCheck.length <= 0) {
+//     return next({ message: { err: 'user not found' } });
+//   }
+//   //compare password
+//   const match = bcrypt.compare(
+//     password,
+//     userCheck[0].password,
+//     function (err, result) {
+//       if (result === true) {
+//         //console.log('this is the log ', userCheck[0]);
+//         res.locals.user = userCheck[0];
+//         return next();
+//       } else {
+//         return next({ message: { err: 'user not found or wrong password' } });
+//       }
+//     }
+//   );
+// };
+
+// Delete a user
+// email and password must be passed in request body
+userController.deleteUser = async (req, res, next) => {
+  const { email, password } = req.body;
+  //console.log('entering deletion middleware ');
   //compare password
   const match = bcrypt.compare(
     password,
@@ -61,13 +84,6 @@ userController.authUser = async (req, res, next) => {
       }
     }
   );
-};
-
-// Delete a user
-// email and password must be passed in request body
-userController.deleteUser = async (req, res, next) => {
-  const { email, password } = req.body;
-  //console.log('entering deletion middleware ');
 
   try {
     // find the user by email and delete
