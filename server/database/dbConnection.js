@@ -10,6 +10,7 @@ async function startServer() {
     useUnifiedTopology: true,
     dbName: 'Tallyio',
   });
-  console.log(`MongoDB is connected to: ${connection.connection.host}`);
+  console.log('Connected to Database');
+  // console.log(`connected to: ${connection.connection.host}`);
 }
 module.exports = startServer;

@@ -1,19 +1,33 @@
 const { restart } = require('nodemon');
-const User = require('../model/userModel.js');
+const { User } = require('../model/userModel.js');
+const userController = {};
 const asyncHandler = require('express-async-handler');
 const bcrypt = require('bcrypt');
-
-const userController = {};
 
 // create user
 // first name, email, password
 userController.registerUser = asyncHandler(async (req, res, next) => {
+  console.log('inside registerUser in userController');
   const { firstName, email, password } = req.body;
+  console.log(req.body);
+
+  // User.create(req.body)
+  //   .then((createdDoc) => {
+  //     res.locals.createChar = createdDoc;
+  //     return next();
+  //   })
+  //   .catch((err) =>
+  //     next({
+  //       log: `Express error handler caught unknown middleware error: ERROR : ${err}`,
+  //       status: err.status || 500,
+  //     })
+  //   );
 
   //if (User.find({ username })) throw new Error("User already exists");
   const userCheck = await User.find({ email });
   //console.log('username : ', username, ' : ', userCheck);
   if (userCheck.length > 0) throw new Error('User already exists');
+  console.log('user exists');
   // if we find the user we need to throw an error
   res.locals.registeredUser = await User.create({
     firstName: firstName,
@@ -26,7 +40,7 @@ userController.registerUser = asyncHandler(async (req, res, next) => {
 
 // validate user
 userController.authUser = async (req, res, next) => {
-  const { firstName, email, password } = req.body;
+  const { email, password } = req.body;
   // get user from db
   const userCheck = await User.find({ email });
   console.log('email : ', email, ' : ', userCheck);
@@ -53,7 +67,7 @@ userController.authUser = async (req, res, next) => {
 // Delete a user
 // email and password must be passed in request body
 userController.deleteUser = async (req, res, next) => {
-  const { email, password } = req.body;
+  const { email } = req.body;
   //console.log('entering deletion middleware ');
 
   try {
@@ -72,6 +86,7 @@ userController.deleteUser = async (req, res, next) => {
 };
 
 // find a user
-// mostly for  testing deletion
+// mostly for testing deletion
 // username must be passed in request body
+
 module.exports = userController;
