@@ -14,21 +14,21 @@ h1 {
   text-align: center;
 }
 
-body {
-  max-width: 390px;
-}
-
 input {
   margin-bottom: 10px;
 }
 
 .big-container {
   display: flex;
+
   justify-items: center;
+  align-items: center;
 }
 .app-container {
+  width: 390px;
   border: 2px solid rgb(53, 53, 53);
   border-radius: 1rem;
+  padding: 1rem;
 }
 .loginPage-container {
   display: flex;
@@ -109,6 +109,23 @@ input {
   margin: 5px;
   padding: 5px;
   min-width: 80%;
+}
+
+.add-option-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 50%;
+}
+
+.add-option-input {
+  flex-direction: row;
+  padding-left: 5px;
+}
+
+.add-option-submit {
+  display: flex;
+  flex-direction: row;
 }
 
 .tt-tally-name {
@@ -192,6 +209,7 @@ input {
   align-content: center;
   align-items: center;
 }
+
 .new-tally-container form {
   display: flex;
   justify-content: center;
@@ -201,6 +219,10 @@ input {
 
 .new-tally-container input {
   display: block;
+}
+
+.new-tally-container: :nth-of-type(4) {
+  display: flex;
 }
 
 .new-tally-create {

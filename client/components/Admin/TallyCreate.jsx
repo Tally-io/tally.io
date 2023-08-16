@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import NavBar from "./little_comps/NavBar.jsx";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
-// import userInfo?? right now it's hard coded
-const userInfo = {
-  name: "Josh",
-  tallies: ["asdf1234", "qwer1234", "zxcv5678"],
-};
-
 const TallyCreate = () => {
+  // import userInfo?? right now it's hard coded
+  const userInfo = {
+    name: "Josh",
+    tallies: ["asdf1234", "qwer1234", "zxcv5678"],
+  };
+
+  const [newTally, setNewTally] = useState("");
+
   const createTally = () => {};
 
   const [value, setValue] = React.useState("some\ntext");
@@ -23,6 +25,11 @@ const TallyCreate = () => {
   const onCopy = React.useCallback(() => {
     setCopied(true);
   }, []);
+
+  const handleNewTallyText = (e) => {
+    e.preventDefault();
+    setNewTally(e.target.value);
+  };
 
   return (
     <div>
@@ -41,18 +48,19 @@ const TallyCreate = () => {
           />
           <input
             className="new-tally-input"
-            type="answer"
+            type="text"
             placeholder="answer here"
             name="answer_1"
             required
           />
           <input
             className="new-tally-input"
-            type="answer"
+            type="text"
             placeholder="answer here"
             name="answer_2"
             required
           />
+
           <button type="submit" className="new-tally-create">
             Create a Tally!
           </button>

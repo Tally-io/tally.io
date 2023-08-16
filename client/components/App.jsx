@@ -22,7 +22,7 @@ const App = () => {
             <Route path="/" element={<Landing />} />
             <Route path="/home" element={<Home />} />
             <Route path="/create" element={<TallyCreate />} />
-            {/* <Route path='/test' element={<TakeTally />} /> */}
+            <Route path="/test" element={<TakeTally />} />
           </Routes>
         </BrowserRouter>
       </div>
