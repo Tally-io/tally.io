@@ -4,7 +4,7 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const TallyCreate = () => {
   // import userInfo?? right now it's hard coded
-const loggedInPerson = '617e4a9a88438e5e2b96e4fb'
+  const loggedInPerson = "617e4a9a88438e5e2b96e4fb";
 
   const userInfo = {
     name: "Josh",
@@ -13,7 +13,18 @@ const loggedInPerson = '617e4a9a88438e5e2b96e4fb'
 
   const [newTally, setNewTally] = useState("");
 
-  const createTally = () => {};
+  const createTally = (event) => {
+    event.preventDefault();
+    // make it ready to use any number of answers
+
+    const formData = [];
+    let i = 0;
+    while (event.target[i]) {
+      formData.push(event.target[i].value);
+      i++;
+    }
+    console.log(formData);
+  };
 
   const [value, setValue] = React.useState("some\ntext");
   const [copied, setCopied] = React.useState(false);
@@ -44,7 +55,8 @@ const loggedInPerson = '617e4a9a88438e5e2b96e4fb'
         <form onSubmit={createTally}>
           <input
             className="new-tally-input"
-            type="question"
+            type="text"
+            name="question"
             placeholder="What's your question?"
             required
           />
