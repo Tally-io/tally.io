@@ -1,6 +1,6 @@
-const surveyModel = require('../model/surveyModel');
-const asyncHandler = require('express-async-handler');
-const { parse } = require('dotenv');
+const surveyModel = require("../model/surveyModel");
+const asyncHandler = require("express-async-handler");
+const { parse } = require("dotenv");
 const { Question, Option } = surveyModel;
 
 const surveyController = {};
@@ -29,7 +29,7 @@ surveyController.createQuestion = async (req, res, next) => {
     return next({
       log: `Express error handler caught unknown middleware error: ERROR : ${err}`,
       status: err.status || 500,
-      message: 'Error creating question',
+      message: "Error creating question",
     });
   }
 };
@@ -43,7 +43,7 @@ surveyController.serveQuestions = async (req, res, next) => {
     if (!question) {
       return res
         .status(404)
-        .json({ message: 'Question not found or URL invalid.' });
+        .json({ message: "Question not found or URL invalid." });
     }
 
     // send back the entire question using res.locals
@@ -53,7 +53,7 @@ surveyController.serveQuestions = async (req, res, next) => {
     return next({
       log: `Error fetching survey: ${err}`,
       status: 500,
-      message: 'An error occurred while fetching the survey.',
+      message: "An error occurred while fetching the survey.",
     });
   }
 };
@@ -66,7 +66,7 @@ surveyController.selectOption = async (req, res, next) => {
     const question = await Question.findById(questionId);
 
     if (!question) {
-      return res.status(404).json({ message: 'Question not found' });
+      return res.status(404).json({ message: "Question not found" });
     }
 
     // Find the selected option within the question
@@ -75,14 +75,14 @@ surveyController.selectOption = async (req, res, next) => {
     );
 
     if (!selectedOption) {
-      return res.status(404).json({ message: 'Option not found' });
+      return res.status(404).json({ message: "Option not found" });
     }
 
     // Check if the user has already selected this option
     if (selectedOption.selectedBy.includes(userId)) {
       return res
         .status(400)
-        .json({ message: 'Option already selected by this user' });
+        .json({ message: "Option already selected by this user" });
     }
 
     // Add the user ID to the selectedBy array
@@ -116,7 +116,7 @@ surveyController.selectOption = async (req, res, next) => {
     return next({
       log: `Error fetching survey: ${err}`,
       status: 500,
-      message: 'An error occurred while fetching the survey.',
+      message: "An error occurred while fetching the survey.",
     });
   }
 };
@@ -130,7 +130,7 @@ surveyController.getWinner = async (req, res, next) => {
     if (!question) {
       return res
         .status(404)
-        .json({ message: 'Question not found or URL invalid.' });
+        .json({ message: "Question not found or URL invalid." });
     }
 
     // Find the most selected option based on votesCount
@@ -147,7 +147,7 @@ surveyController.getWinner = async (req, res, next) => {
     return next({
       log: `Error fetching survey: ${err}`,
       status: 500,
-      message: 'An error occurred while fetching the survey.',
+      message: "An error occurred while fetching the survey.",
     });
   }
 };
