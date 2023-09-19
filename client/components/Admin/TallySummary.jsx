@@ -5,7 +5,7 @@ const TallySummary = () => {
   return (
     <div>
       <NavBar />
-      <h1>this is the landing page</h1>
+      <h1>tally summary</h1>
     </div>
   );
 };

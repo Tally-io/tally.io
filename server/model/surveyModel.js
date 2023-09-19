@@ -5,8 +5,15 @@ const Schema = mongoose.Schema;
 
 // optionSchema
 const optionSchema = new Schema({
-  option: { type: String, required: true },
+  text: { type: String, required: true },
   votesCount: { type: Number, default: 0 },
+  selectedBy: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      unique: true, // Ensures that a user can select the option only once
+    },
+  ],
 });
 
 // Option model based on the optionSchema
@@ -15,7 +22,6 @@ const Option = mongoose.model('Option', optionSchema);
 //questionSchema
 const questionSchema = new Schema({
   title: { type: String, required: true },
-  invitationUrl: { type: String, required: true, unique: true },
   dateCreated: { type: Date, default: Date.now },
   createdBy: {
     type: Schema.Types.ObjectId,
@@ -26,16 +32,6 @@ const questionSchema = new Schema({
   mostSelectedOption: { type: Schema.Types.ObjectId, ref: 'Option' },
 });
 
-//method to calculate and update mostSelectedOption
-questionSchema.methods.calculateMostSelectedOption = async function () {
-  const mostSelected = this.options.reduce(
-    (prev, current) => (prev.votesCount > current.votesCount ? prev : current),
-    this.options[0]
-  );
-  this.mostSelectedOption = mostSelected._id;
-  await this.save();
-};
-
-const Question = mongoose.model('tallies', questionSchema);
+const Question = mongoose.model('survey', questionSchema);
 
 module.exports = { Question, Option };

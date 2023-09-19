@@ -11,15 +11,15 @@ const TallyTile = (props) => {
   if (props.active) {
     return (
       <div className="tally-tile">
-        <p>{props.name}</p>
-        <p>{props.numResp}</p>
+        <div className="tt-tally-name">{props.name}</div>
+        <div className="tt-tally-votes">{props.numResp}</div>
       </div>
     );
   } else {
     return (
       <div className="tally-tile-inactive">
-        <p>{props.name}</p>
-        <p>{props.numResp}</p>
+        <div className="tt-tally-name">{props.name}</div>
+        <div className="tt-tally-votes">{props.numResp}</div>
       </div>
     );
   }

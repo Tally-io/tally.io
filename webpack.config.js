@@ -7,6 +7,7 @@ module.exports = {
   entry: './client/index.js', // Your app's entry point
   output: {
     path: path.resolve(__dirname, 'build'), // Output directory
+
     filename: 'bundle.js', // Output filename
   },
   plugins: [

@@ -18,6 +18,7 @@ const Landing = () => {
     const emailVal = formData.get('loginEmail');
     const passVal = formData.get('loginPassword');
     //ENTER LOGIN LOGIC HERE, if logic passes, navigate to /home endpoint
+    
     fetch('/user/login', {
       method: 'POST',
       headers: {
@@ -44,16 +45,16 @@ const Landing = () => {
     //prevents default form submission
     e.preventDefault();
     const formData = new FormData(e.target);
-    const emailVal = formData.get('loginEmail');
-    const passVal = formData.get('loginPassword');
+    const emailVal = formData.get('Email');
+    const passVal = formData.get('Password');
     const nameVal = formData.get('name');
-    fetch('/user', {
+    fetch('/user/create', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
       },
       body: JSON.stringify({
-        name: nameVal,
+        firstName: nameVal,
         email: emailVal,
         password: passVal,
       }),
@@ -73,51 +74,71 @@ const Landing = () => {
       });
   };
   return (
-    <div className="loginPage-container">
-      <div className="login-container">
+    <div className='loginPage-container'>
+      <div>
+        <p>
+          This app will change your life! It can solve world hunger and get
+          pandas off the endangered species list. It can even repaired your
+          relationship with your mother!
+        </p>
+        <p>Log in or sign up to get started! </p>
+        <hr />
+      </div>
+
+      <div className='login-container'>
         <form onSubmit={handleLogin}>
           <input
-            className="login-input"
-            type="email"
-            placeholder="Enter Email"
-            name="loginEmail"
+            className='login-input'
+            type='email'
+            placeholder='Enter Email'
+            name='loginEmail'
             value={loginEmail}
             onChange={(e) => setLoginEmail(e.target.value)}
           />
           <input
-            className="login-input"
-            type="password"
-            placeholder="Enter Password"
-            name="loginPassword"
+            className='login-input'
+            type='password'
+            placeholder='Enter Password'
+            name='loginPassword'
             value={loginPass}
             onChange={(e) => setLoginPass(e.target.value)}
           />
-          <button className="loginBtn" type="submit">
+          <br />
+          <button type='submit' className='loginBtn'>
             Login
           </button>
         </form>
       </div>
-      <div className="signUp-container">
+
+      <div>
+        <hr />
+        Don't have an account yet? Sign up to get started!
+      </div>
+
+      <div className='signUp-container'>
         <form onSubmit={handleSignup}>
           <input
-            type="text"
-            placeholder="Name"
+            type='text'
+            placeholder='Name'
             value={name}
+            name = 'name'
             onChange={(e) => setName(e.target.value)}
           />
           <input
-            type="email"
-            placeholder="Email"
+            type='email'
+            placeholder='Email'
             value={email}
+            name = "Email"
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
-            type="password"
-            placeholder="Password"
+            type='password'
+            placeholder='Password'
             value={pass}
+            name = "password"
             onChange={(e) => setPass(e.target.value)}
           />
-          <button className="signupBtn" type="submit">
+          <button type='submit' className='signupBtn'>
             Sign Up
           </button>
         </form>
